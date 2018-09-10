@@ -11,14 +11,13 @@ import java.util.List;
 import java.util.Map;
 
 public class InCondition implements QueryCondition {
-    public String resolve(Map condition, Config config) {
-
-        List values = (List) MapUtil.getObjectFromMap(ConditionStatic.VALUE, condition);
+    public String resolve(Object value, Map condition, Config config) {
+        List values = (List) value;
         if (values.size() == 1) {
             /**
              * 当条件in查询长度为1时，自动优化为等于处理
              */
-            return NormalCondition.EQ.resolve(condition, config);
+            return NormalCondition.EQ.resolve(value, condition, config);
         }
         String conditionName = MapUtil.getStringFromMap(ConditionStatic.CONDITION_NAME, condition);
         String schemaName = MapUtil.getStringFromMap(ConditionStatic.SCHEMA_NAME, condition);

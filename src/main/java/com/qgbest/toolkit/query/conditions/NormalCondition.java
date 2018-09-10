@@ -32,16 +32,12 @@ public class NormalCondition implements QueryCondition {
      * 小于 less equal
      */
     public static NormalCondition LTE = new NormalCondition("<=");
-    /**
-     * 模糊查询
-     */
-    public static NormalCondition LIKE = new NormalCondition(" like ");
 
     public NormalCondition(String operator) {
         this.operator = operator;
     }
 
-    public String resolve(Map condition, Config config) {
+    public String resolve(Object value, Map condition, Config config) {
         String conditionName = MapUtil.getStringFromMap(ConditionStatic.CONDITION_NAME, condition);
         String schemaName = MapUtil.getStringFromMap(ConditionStatic.SCHEMA_NAME, condition);
         if (schemaName == null) {
@@ -49,7 +45,6 @@ public class NormalCondition implements QueryCondition {
         }
         String dataTypeStr = MapUtil.getStringFromMap(ConditionStatic.DATA_TYPE, condition);
         EnumConditionType dataType = EnumConditionType.getType(dataTypeStr);
-        Object value = MapUtil.getObjectFromMap(ConditionStatic.VALUE, condition);
         StringBuilder sb = new StringBuilder(String.format(" and %s", schemaName));
         switch (dataType) {
             case NUMBER:

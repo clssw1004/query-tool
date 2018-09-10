@@ -6,5 +6,5 @@ import java.util.Map;
 
 public interface QueryCondition {
 
-    String resolve(Map condition, Config config);
+    String resolve(Object value, Map condition, Config config);
 }

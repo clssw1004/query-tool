@@ -1,48 +1,76 @@
 package com.qgbest.toolkit.query;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qgbest.toolkit.query.conditions.ConditionFactory;
+import com.qgbest.toolkit.query.conditions.ConditionSchema;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class MainTest {
 
+
+    @Test
+    public void testCondition() throws IOException {
+
+        Map map = new HashMap();
+        map.put("projName", "人类补全计划");
+        List list = new ArrayList();
+        list.add("01");
+        list.add("05");
+        list.add("10");
+        map.put("statusCode", list);
+        map.put("fillDate", "2018-09-10 23:59:59");
+        map.put("cntNum", "320121");
+        map.put("id", 1286);
+        map.put("sellerName", "南京");
+        ConditionSchema schema = new ConditionSchema(testJson);
+        System.out.println(schema.resolveMap(map));
+        Assert.assertTrue(true);
+    }
+
     public static final String testJson = "[" +
             "  {" +
-            "    \"cname\": \"projName\"," +
-            "    \"value\": \"人类补全计划\"" +
+            "    \"cname\": \"projName\"" +
             "  }," +
             "  {" +
-            "    \"cname\": \"beginDate\"," +
-            "    \"value\": \"2018-09-01 01:01:12\"," +
+            "    \"cname\": \"fillDate\"," +
             "    \"dataType\": \"dt\"," +
             "    \"type\": \"gte\"" +
             "  }," +
             "  {" +
-            "    \"cname\": \"beginDate\"," +
-            "    \"value\": \"2018-09-10 23:59:59\"," +
+            "    \"cname\": \"fillDate\"," +
             "    \"dataType\": \"dt\"," +
             "    \"type\": \"lte\"" +
             "  }," +
             "  {" +
             "    \"cname\": \"statusCode\"," +
-            "    \"value\": [\"01\", \"05\", \"10\"]," +
             "    \"type\": \"in\"" +
+            "  }," +
+            "  {" +
+            "    \"cname\": \"cntNum\"," +
+            "    \"sname\": \"CNT_NAME\"," +
+            "    \"pattern\": \"%$%\"," +
+            "    \"type\": \"%\"" +
+            "  }," +
+            "  {" +
+            "    \"cname\": \"cntNum\"," +
+            "    \"sname\": \"CNT_NAME\"," +
+            "    \"pattern\": \"320%$\"," +
+            "    \"type\": \"%\"" +
+            "  }," +
+            "  {" +
+            "    \"cname\": \"sellerName\"," +
+            "    \"type\": \"%\"" +
+            "  }," +
+            "  {" +
+            "    \"cname\": \"id\"," +
+            "    \"sname\": \"CNT_ID\"," +
+            "    \"dataType\": \"num\"," +
+            "    \"type\": \"eq\"" +
             "  }" +
             "]";
-
-    @Test
-    public void testCondition() throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        List list = objectMapper.readValue(testJson, List.class);
-        for (Object o : list) {
-            String config = ConditionFactory.resolve((Map) o);
-            System.out.println(config);
-        }
-        Assert.assertTrue(true);
-    }
 }
