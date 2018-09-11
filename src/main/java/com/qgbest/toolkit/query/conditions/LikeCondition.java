@@ -19,10 +19,10 @@ public class LikeCondition implements CommonCondition {
         if (dataExtend != null) {
             dataExtend = dataExtend.replace("$", value.toString());
         } else {
-            dataExtend = "%%";
+            dataExtend = "%" + value.toString() + "%";
         }
         if (prefix != null) {
-            return " and " + prefix + " ." + schemaName + " like '" + dataExtend + "' ";
+            return " and " + prefix + "." + schemaName + " like '" + dataExtend + "' ";
         } else {
             return " and " + schemaName + " like '" + dataExtend + "' ";
         }

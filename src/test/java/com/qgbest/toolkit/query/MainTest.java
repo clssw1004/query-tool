@@ -35,45 +35,93 @@ public class MainTest {
     public static final String testJson = "{" +
             "  \"rules\": [" +
             "    {" +
-            "      \"cname\": \"projName\"" +
-            "    }," +
-            "    {" +
-            "      \"cname\": \"fillDate\"," +
-            "      \"dataType\": \"dt\"," +
-            "      \"type\": \"gte\"" +
-            "    }," +
-            "    {" +
-            "      \"cname\": \"fillDate\"," +
-            "      \"dataType\": \"dt\"," +
-            "      \"type\": \"lte\"" +
-            "    }," +
-            "    {" +
-            "      \"cname\": \"statusCode\"," +
-            "      \"type\": \"in\"," +
+            "      \"cname\": \"projName\"," +
+            "      \"type\": \"like\"," +
             "      \"prefix\": \"a\"" +
             "    }," +
             "    {" +
             "      \"cname\": \"cntNum\"," +
-            "      \"sname\": \"CNT_NAME\"," +
-            "      \"pattern\": \"%$%\"," +
-            "      \"type\": \"%\"" +
-            "    }," +
-            "    {" +
-            "      \"cname\": \"cntNum\"," +
-            "      \"sname\": \"CNT_NAME\"," +
-            "      \"pattern\": \"320%$\"," +
-            "      \"type\": \"%\"" +
+            "      \"prefix\": \"a\"" +
             "    }," +
             "    {" +
             "      \"cname\": \"sellerName\"," +
-            "      \"type\": \"%\"," +
+            "      \"type\": \"like\"," +
             "      \"prefix\": \"a\"" +
             "    }," +
             "    {" +
-            "      \"cname\": \"id\"," +
-            "      \"sname\": \"CNT_ID\"," +
-            "      \"dataType\": \"num\"," +
-            "      \"type\": \"eq\"" +
+            "      \"cname\": \"buyerName\"," +
+            "      \"type\": \"like\"," +
+            "      \"prefix\": \"a\"" +
+            "    }," +
+            "    {" +
+            "      \"cname\": \"submitDate1\"," +
+            "      \"sname\": \"SUBMIT_DATE\"," +
+            "      \"type\": \"gte\"," +
+            "      \"dataType\": \"dt\"," +
+            "      \"prefix\": \"a\"" +
+            "    }," +
+            "    {" +
+            "      \"cname\": \"submitDate2\"," +
+            "      \"sname\": \"SUBMIT_DATE\"," +
+            "      \"type\": \"lte\"," +
+            "      \"dataType\": \"dt\"," +
+            "      \"prefix\": \"a\"" +
+            "    }," +
+            "    {" +
+            "      \"cname\": \"statusCode\"," +
+            "      \"prefix\": \"a\"" +
+            "    }," +
+            "    {" +
+            "      \"cname\": \"vatStatusCode\"," +
+            "      \"prefix\": \"a\"" +
+            "    }," +
+            "    {" +
+            "      \"cname\": \"bitStatusCode\"," +
+            "      \"prefix\": \"a\"" +
+            "    }," +
+            "    {" +
+            "      \"cname\": \"adddedStatusCode\"," +
+            "      \"prefix\": \"b\"" +
+            "    }," +
+            "    {" +
+            "      \"cname\": \"regCode\"," +
+            "      \"prefix\": \"b\"" +
+            "    }," +
+            "    {" +
+            "      \"cname\": \"cntAdmdivCode\"," +
+            "      \"prefix\": \"b\"" +
+            "    }," +
+            "    {" +
+            "      \"cname\": \"fillDate1\"," +
+            "      \"sname\": \"SUBMIT_DATE\"," +
+            "      \"type\": \"gte\"," +
+            "      \"dataType\": \"dt\"," +
+            "      \"prefix\": \"a\"" +
+            "    }," +
+            "    {" +
+            "      \"cname\": \"fillDate2\"," +
+            "      \"sname\": \"SUBMIT_DATE\"," +
+            "      \"type\": \"lte\"," +
+            "      \"dataType\": \"dt\"," +
+            "      \"prefix\": \"a\"" +
+            "    }," +
+            "    {" +
+            "      \"cname\": \"regDate1\"," +
+            "      \"sname\": \"SUBMIT_DATE\"," +
+            "      \"type\": \"gte\"," +
+            "      \"dataType\": \"dt\"," +
+            "      \"prefix\": \"a\"" +
+            "    }," +
+            "    {" +
+            "      \"cname\": \"regDate2\"," +
+            "      \"sname\": \"SUBMIT_DATE\"," +
+            "      \"type\": \"lte\"," +
+            "      \"dataType\": \"dt\"," +
+            "      \"prefix\": \"a\"" +
+            "    }," +
+            "    {" +
+            "      \"cname\": \"cntTypeCode\"," +
+            "      \"prefix\": \"a\"" +
             "    }" +
             "  ]" +
             "}";
