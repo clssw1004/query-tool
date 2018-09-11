@@ -7,7 +7,7 @@ import com.qgbest.toolkit.query.utils.NameTransfer;
 
 import java.util.Map;
 
-public class LikeCondition implements QueryCondition {
+public class LikeCondition implements CommonCondition {
     public String resolve(Object value, Map condition, Config config) {
         String conditionName = MapUtil.getStringFromMap(ConditionStatic.CONDITION_NAME, condition);
         String schemaName = MapUtil.getStringFromMap(ConditionStatic.SCHEMA_NAME, condition);
@@ -15,12 +15,18 @@ public class LikeCondition implements QueryCondition {
             schemaName = NameTransfer.toHungaryName(conditionName);
         }
         String dataExtend = MapUtil.getStringFromMap(ConditionStatic.PATTERN, condition);
+        String prefix = MapUtil.getStringFromMap(ConditionStatic.PREFIX, condition);
         if (dataExtend != null) {
             dataExtend = dataExtend.replace("$", value.toString());
-            return " and " + schemaName + " like '" + dataExtend + "' ";
         } else {
-            return " and " + schemaName + " like '%" + value.toString() + "%' ";
+            dataExtend = "%%";
+        }
+        if (prefix != null) {
+            return " and " + prefix + " ." + schemaName + " like '" + dataExtend + "' ";
+        } else {
+            return " and " + schemaName + " like '" + dataExtend + "' ";
         }
 
     }
+
 }

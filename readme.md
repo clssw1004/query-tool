@@ -20,9 +20,10 @@
    > 例如当 type 为 % ,sname 为 CNT_NUM pattern 为%$,前台录入为 123，则查询条件会被组装为：and CNT_NUM like '%123'
 
 # 示例：
-* 如下schema：
 
-``` json
+- 如下 schema：
+
+```json
 [
   {
     "cname": "projName"
@@ -39,7 +40,8 @@
   },
   {
     "cname": "statusCode",
-    "type": "in"
+    "type": "in",
+    "prefix" : "a"
   },
   {
     "cname": "cntNum",
@@ -55,7 +57,8 @@
   },
   {
     "cname": "sellerName",
-    "type": "%"
+    "type": "%",
+    "prefix": "a"
   },
   {
     "cname": "id",
@@ -64,16 +67,17 @@
     "type": "eq"
   }
 ]
-
 ```
-* 输出为：
-``` SQL
- and FILL_DATE>=to_date(2018-09-10 23:59:59) 
- and FILL_DATE<=to_date(2018-09-10 23:59:59) 
- and PROJ_NAME='人类补全计划' 
- and SELLER_NAME like '%南京%' 
- and CNT_ID=1286 
- and CNT_NAME like '%320121%' 
- and CNT_NAME like '320%320121' 
- and STATUS_CODE in ('01','05','10') 
+
+- 输出为：
+
+```SQL
+ and FILL_DATE>=to_date(2018-09-10 23:59:59)
+ and FILL_DATE<=to_date(2018-09-10 23:59:59)
+ and PROJ_NAME='人类补全计划'
+ and SELLER_NAME like '%南京%'
+ and CNT_ID=1286
+ and CNT_NAME like '%320121%'
+ and CNT_NAME like '320%320121'
+ and STATUS_CODE in ('01','05','10')
 ```

@@ -5,11 +5,11 @@ import com.qgbest.toolkit.query.config.Config;
 import com.qgbest.toolkit.query.enumeration.EnumConditionType;
 import com.qgbest.toolkit.query.utils.MapUtil;
 import com.qgbest.toolkit.query.utils.NameTransfer;
-import com.qgbest.toolkit.query.utils.SqlUtils;
+import com.qgbest.toolkit.query.utils.SQLUtils;
 
 import java.util.Map;
 
-public class NormalCondition implements QueryCondition {
+public class NormalCondition implements CommonCondition {
     private String operator;
 
     /**
@@ -45,13 +45,25 @@ public class NormalCondition implements QueryCondition {
         }
         String dataTypeStr = MapUtil.getStringFromMap(ConditionStatic.DATA_TYPE, condition);
         EnumConditionType dataType = EnumConditionType.getType(dataTypeStr);
-        StringBuilder sb = new StringBuilder(String.format(" and %s", schemaName));
+        String prefix = MapUtil.getStringFromMap(ConditionStatic.PREFIX, condition);
+        StringBuilder sb = new StringBuilder();
+
+        if (prefix != null) {
+            sb.append(String.format(" and %s.%s", prefix, schemaName));
+        } else {
+            sb.append(String.format(" and %s", schemaName));
+        }
+
         switch (dataType) {
             case NUMBER:
                 sb.append(String.format("%s%s", operator, value.toString()));
                 break;
             case DATE:
-                sb.append(String.format("%s%s", operator, SqlUtils.getFormatByDatabase(value.toString(), config.datebase)));
+                String format = MapUtil.getStringFromMap(ConditionStatic.FORMAT, condition);
+                if (format == null) {
+                    format = config.datebase.defaultFormat;
+                }
+                sb.append(String.format("%s%s", operator, SQLUtils.getToDataSql(value.toString(), format, config.datebase)));
                 break;
             default:
                 sb.append(String.format("%s'%s'", operator, value.toString()));

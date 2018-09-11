@@ -7,4 +7,5 @@ public class ConditionStatic {
     public static final String DATA_TYPE = "dataType";
     public static final String FORMAT = "format";
     public static final String TYPE = "type";
+    public static final String PREFIX = "prefix";
 }

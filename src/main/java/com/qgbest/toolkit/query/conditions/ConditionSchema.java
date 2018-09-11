@@ -32,6 +32,7 @@ public class ConditionSchema {
         while (iterator.hasNext()) {
             Map.Entry<String, Object> entry = iterator.next();
             sb.append(resolveSingle(entry.getValue(), entry.getKey()));
+
         }
         return sb.toString();
     }

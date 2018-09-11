@@ -34,7 +34,8 @@ public class MainTest {
 
     public static final String testJson = "[" +
             "  {" +
-            "    \"cname\": \"projName\"" +
+            "    \"cname\": \"projName\"," +
+            "    \"prefix\": \"a\"" +
             "  }," +
             "  {" +
             "    \"cname\": \"fillDate\"," +
@@ -48,7 +49,8 @@ public class MainTest {
             "  }," +
             "  {" +
             "    \"cname\": \"statusCode\"," +
-            "    \"type\": \"in\"" +
+            "    \"type\": \"in\"," +
+            "    \"prefix\" : \"a\"" +
             "  }," +
             "  {" +
             "    \"cname\": \"cntNum\"," +
@@ -64,7 +66,8 @@ public class MainTest {
             "  }," +
             "  {" +
             "    \"cname\": \"sellerName\"," +
-            "    \"type\": \"%\"" +
+            "    \"type\": \"%\"," +
+            "    \"prefix\": \"a\"" +
             "  }," +
             "  {" +
             "    \"cname\": \"id\"," +

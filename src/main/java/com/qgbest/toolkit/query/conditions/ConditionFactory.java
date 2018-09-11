@@ -5,11 +5,10 @@ import com.qgbest.toolkit.query.config.Config;
 import com.qgbest.toolkit.query.utils.MapUtil;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ConditionFactory {
-    static Map<String, QueryCondition> factory = new HashMap<String, QueryCondition>();
+    static Map<String, CommonCondition> factory = new HashMap<String, CommonCondition>();
 
     static {
         factory.put("eq", NormalCondition.EQ);
@@ -26,8 +25,8 @@ public class ConditionFactory {
         if (type == null) {
             type = "eq";
         }
-        QueryCondition queryCondition = factory.get(type);
-        return queryCondition.resolve(value, condition, Config.getConfig());
+        CommonCondition commonCondition = factory.get(type);
+        return commonCondition.resolve(value, condition, Config.getConfig());
     }
 
 }

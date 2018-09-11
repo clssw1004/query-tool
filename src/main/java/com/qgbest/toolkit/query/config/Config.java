@@ -1,5 +1,7 @@
 package com.qgbest.toolkit.query.config;
 
+import com.qgbest.toolkit.query.enumeration.EnumDatabase;
+
 public class Config {
     private static Config globalConfig = new Config();
 
@@ -12,7 +14,7 @@ public class Config {
     }
 
     public Config setDatebase(String datebase) {
-        this.datebase = datebase;
+        this.datebase = EnumDatabase.getDatabaseByName(datebase);
         return this;
     }
 
@@ -26,7 +28,7 @@ public class Config {
         return this;
     }
 
-    public String datebase = "oracle11g";
+    public EnumDatabase datebase = EnumDatabase.ORACLE11g;
     public String dateFormat = "yyyy-mm-dd HH:mm:ss";
     public boolean ignoreNullCondition = false;
 }

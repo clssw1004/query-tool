@@ -4,7 +4,8 @@ import com.qgbest.toolkit.query.config.Config;
 
 import java.util.Map;
 
-public interface QueryCondition {
+public interface CommonCondition {
 
     String resolve(Object value, Map condition, Config config);
+
 }
