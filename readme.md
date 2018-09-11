@@ -17,10 +17,11 @@
    > 查询类型，值可为：eq（等于）、gt（大于）、gte（大于等于）、lt（小于）、lte（小于等于）、%（like 查询）、in（范围查询）
 
 5. pattern,某些特殊查询会用到。
+
    > 例如当 type 为 % ,sname 为 CNT_NUM pattern 为%$,前台录入为 123，则查询条件会被组装为：and CNT_NUM like '%123'
 
 6. prefix,查询条件表前缀
-   
+
 # 示例：
 
 - 如下 schema：
@@ -43,7 +44,7 @@
   {
     "cname": "statusCode",
     "type": "in",
-    "prefix" : "a"
+    "prefix": "a"
   },
   {
     "cname": "cntNum",
