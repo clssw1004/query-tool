@@ -75,12 +75,12 @@
 - 输出为：
 
 ```SQL
- and FILL_DATE>=to_date(2018-09-10 23:59:59)
- and FILL_DATE<=to_date(2018-09-10 23:59:59)
- and PROJ_NAME='人类补全计划'
- and SELLER_NAME like '%南京%'
- and CNT_ID=1286
- and CNT_NAME like '%320121%'
- and CNT_NAME like '320%320121'
- and STATUS_CODE in ('01','05','10')
+ and FILL_DATE>=to_date('2018-09-10 23:59:59','yyyy-mm-dd hh24:mi:ss') 
+ and FILL_DATE<=to_date('2018-09-10 23:59:59','yyyy-mm-dd hh24:mi:ss') 
+ and a.PROJ_NAME='人类补全计划' 
+ and a .SELLER_NAME like '%%' 
+ and CNT_ID=1286 
+ and CNT_NAME like '%320121%' 
+ and CNT_NAME like '320%320121' 
+ and a.STATUS_CODE in ('01','05','10') 
 ```
