@@ -27,49 +27,51 @@
 - 如下 schema：
 
 ```json
-[
-  {
-    "cname": "projName"
-  },
-  {
-    "cname": "fillDate",
-    "dataType": "dt",
-    "type": "gte"
-  },
-  {
-    "cname": "fillDate",
-    "dataType": "dt",
-    "type": "lte"
-  },
-  {
-    "cname": "statusCode",
-    "type": "in",
-    "prefix": "a"
-  },
-  {
-    "cname": "cntNum",
-    "sname": "CNT_NAME",
-    "pattern": "%$%",
-    "type": "%"
-  },
-  {
-    "cname": "cntNum",
-    "sname": "CNT_NAME",
-    "pattern": "320%$",
-    "type": "%"
-  },
-  {
-    "cname": "sellerName",
-    "type": "%",
-    "prefix": "a"
-  },
-  {
-    "cname": "id",
-    "sname": "CNT_ID",
-    "dataType": "num",
-    "type": "eq"
-  }
-]
+{
+  "rules": [
+    {
+      "cname": "projName"
+    },
+    {
+      "cname": "fillDate",
+      "dataType": "dt",
+      "type": "gte"
+    },
+    {
+      "cname": "fillDate",
+      "dataType": "dt",
+      "type": "lte"
+    },
+    {
+      "cname": "statusCode",
+      "type": "in",
+      "prefix": "a"
+    },
+    {
+      "cname": "cntNum",
+      "sname": "CNT_NAME",
+      "pattern": "%$%",
+      "type": "%"
+    },
+    {
+      "cname": "cntNum",
+      "sname": "CNT_NAME",
+      "pattern": "320%$",
+      "type": "%"
+    },
+    {
+      "cname": "sellerName",
+      "type": "%",
+      "prefix": "a"
+    },
+    {
+      "cname": "id",
+      "sname": "CNT_ID",
+      "dataType": "num",
+      "type": "eq"
+    }
+  ]
+}
 ```
 
 - 输出为：

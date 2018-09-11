@@ -11,9 +11,10 @@ public class ConditionSchema {
 
     private static Map<String, List<Map>> conditions;
 
-    public ConditionSchema(String jsonSchema) throws IOException {
+    public ConditionSchema(String json) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        List list = objectMapper.readValue(jsonSchema, List.class);
+        Map jsonSchema = objectMapper.readValue(json, Map.class);
+        List list = (List) jsonSchema.get("rules");
         conditions = new HashMap<>();
         for (Object o : list) {
             Map conditionCnf = (Map) o;
@@ -22,7 +23,19 @@ public class ConditionSchema {
                 conditions.put(cName, new ArrayList<>());
             }
             conditions.get(cName).add(conditionCnf);
+        }
+    }
 
+    public ConditionSchema(Map jsonSchema) throws IOException {
+        List list = (List) jsonSchema.get("rules");
+        conditions = new HashMap<>();
+        for (Object o : list) {
+            Map conditionCnf = (Map) o;
+            String cName = MapUtil.getStringFromMap(ConditionStatic.CONDITION_NAME, conditionCnf);
+            if (!conditions.containsKey(cName)) {
+                conditions.put(cName, new ArrayList<>());
+            }
+            conditions.get(cName).add(conditionCnf);
         }
     }
 
