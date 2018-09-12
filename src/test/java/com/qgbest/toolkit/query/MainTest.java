@@ -18,15 +18,12 @@ public class MainTest {
 
         Map map = new HashMap();
         map.put("projName", "人类补全计划");
-        List list = new ArrayList();
-        list.add("01");
-        list.add("05");
-        list.add("10");
-        map.put("statusCode", list);
-        map.put("fillDate", "2018-09-10 23:59:59");
+        map.put("statusCode", "05");
+        map.put("fillDate1", "2018-09-01 12:02:11");
+        map.put("fillDate2", "2018-09-10 23`:02:11");
         map.put("cntNum", "320121");
-        map.put("id", 1286);
         map.put("sellerName", "南京");
+        map.put("cntTypeCode", "0201");
         ConditionSchema schema = new ConditionSchema(testJson);
         System.out.println(schema.resolveMap(map));
         Assert.assertTrue(true);
