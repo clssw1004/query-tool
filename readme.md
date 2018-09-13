@@ -18,7 +18,7 @@
 
 5. pattern,某些特殊查询会用到。
 
-   > 例如当 type 为 % ,sname 为 CNT_NUM pattern 为%$,前台录入为 123，则查询条件会被组装为：and CNT_NUM like '%123'
+   > 例如当 type 为 like ,sname 为 CNT_NUM pattern 为%$,前台录入为 123，则查询条件会被组装为：and CNT_NUM like '%123'
 
 6. prefix,查询条件表前缀
 
