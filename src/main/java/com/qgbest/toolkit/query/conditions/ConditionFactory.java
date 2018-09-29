@@ -2,6 +2,7 @@ package com.qgbest.toolkit.query.conditions;
 
 import com.qgbest.toolkit.query.config.ConditionStatic;
 import com.qgbest.toolkit.query.config.Config;
+import com.qgbest.toolkit.query.pojo.Condition;
 import com.qgbest.toolkit.query.utils.MapUtil;
 
 import java.util.HashMap;
@@ -20,12 +21,8 @@ public class ConditionFactory {
         factory.put("in", new InCondition());
     }
 
-    public static String resolve(Object value, Map condition) {
-        String type = MapUtil.getStringFromMap(ConditionStatic.TYPE, condition);
-        if (type == null) {
-            type = "eq";
-        }
-        CommonCondition commonCondition = factory.get(type);
+    public static String resolve(Object value, Condition condition) {
+        CommonCondition commonCondition = factory.get(condition.getType());
         return commonCondition.resolve(value, condition, Config.getConfig());
     }
 

@@ -3,6 +3,7 @@ package com.qgbest.toolkit.query.conditions;
 import com.qgbest.toolkit.query.config.ConditionStatic;
 import com.qgbest.toolkit.query.config.Config;
 import com.qgbest.toolkit.query.enumeration.EnumConditionType;
+import com.qgbest.toolkit.query.pojo.Condition;
 import com.qgbest.toolkit.query.utils.MapUtil;
 import com.qgbest.toolkit.query.utils.NameTransfer;
 import com.qgbest.toolkit.query.utils.SQLUtils;
@@ -37,29 +38,22 @@ public class NormalCondition implements CommonCondition {
         this.operator = operator;
     }
 
-    public String resolve(Object value, Map condition, Config config) {
-        String conditionName = MapUtil.getStringFromMap(ConditionStatic.CONDITION_NAME, condition);
-        String schemaName = MapUtil.getStringFromMap(ConditionStatic.SCHEMA_NAME, condition);
-        if (schemaName == null) {
-            schemaName = NameTransfer.toHungaryName(conditionName);
-        }
-        String dataTypeStr = MapUtil.getStringFromMap(ConditionStatic.DATA_TYPE, condition);
-        EnumConditionType dataType = EnumConditionType.getType(dataTypeStr);
-        String prefix = MapUtil.getStringFromMap(ConditionStatic.PREFIX, condition);
+    public String resolve(Object value, Condition condition, Config config) {
+
         StringBuilder sb = new StringBuilder();
 
-        if (prefix != null) {
-            sb.append(String.format(" and %s.%s", prefix, schemaName));
+        if (condition.getPrefix() != null) {
+            sb.append(String.format(" %s %s.%s", condition.getRelative(), condition.getPrefix(), condition.getSname()));
         } else {
-            sb.append(String.format(" and %s", schemaName));
+            sb.append(String.format(" %s %s", condition.getRelative(), condition.getSname()));
         }
-
+        EnumConditionType dataType = EnumConditionType.getType(condition.getDataType());
         switch (dataType) {
             case NUMBER:
                 sb.append(String.format("%s%s", operator, value.toString()));
                 break;
             case DATE:
-                String format = MapUtil.getStringFromMap(ConditionStatic.FORMAT, condition);
+                String format = condition.getFormat();
                 if (format == null) {
                     format = config.datebase.defaultFormat;
                 }
