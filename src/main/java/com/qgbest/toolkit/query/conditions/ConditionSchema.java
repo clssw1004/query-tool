@@ -46,7 +46,7 @@ public class ConditionSchema {
         while (iterator.hasNext()) {
             Map.Entry<String, Object> entry = iterator.next();
             List<Condition> ccnf = conditions.get(entry.getKey());
-            if (ccnf.size() > 0) {
+            if (ccnf != null && ccnf.size() > 0) {
                 for (Condition c : ccnf) {
                     String whereItem = ConditionFactory.resolve(entry.getValue(), c);
                     if (c.getGroup() == null) {
@@ -82,14 +82,16 @@ public class ConditionSchema {
     public String resolveSingle(Object value, String cname) {
         StringBuilder sb = new StringBuilder();
         List<Condition> ccnf = conditions.get(cname);
-        if (ccnf == null || ccnf.size() == 0) {
-            return "";
+        if (ccnf != null && ccnf.size() > 0) {
+            if (ccnf == null || ccnf.size() == 0) {
+                return "";
+            }
+            for (Condition cnf : ccnf) {
+                sb.append(ConditionFactory.resolve(value, cnf));
+                sb.append("\n");
+            }
+            return sb.toString();
         }
-        for (Condition cnf : ccnf) {
-            sb.append(ConditionFactory.resolve(value, cnf));
-            sb.append("\n");
-        }
-        return sb.toString();
-
+        return "";
     }
 }
