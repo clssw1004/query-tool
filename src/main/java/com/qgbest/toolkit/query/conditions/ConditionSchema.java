@@ -48,18 +48,20 @@ public class ConditionSchema {
             List<Condition> ccnf = conditions.get(entry.getKey());
             if (ccnf != null && ccnf.size() > 0) {
                 for (Condition c : ccnf) {
-                    String whereItem = ConditionFactory.resolve(entry.getValue(), c);
-                    if (c.getGroup() == null) {
-                        sql.append(whereItem).append("\n");
-                    } else {
-                        if (!groupMap.containsKey(c.getGroup())) {
-                            groupMap.put(c.getGroup(), new ArrayList<String>());
-                            groupRelative.put(c.getGroup(), "and");
+                    if (entry.getValue() != null && !"".equals(entry.getValue())) {
+                        String whereItem = ConditionFactory.resolve(entry.getValue(), c);
+                        if (c.getGroup() == null) {
+                            sql.append(whereItem).append("\n");
+                        } else {
+                            if (!groupMap.containsKey(c.getGroup())) {
+                                groupMap.put(c.getGroup(), new ArrayList<String>());
+                                groupRelative.put(c.getGroup(), "and");
+                            }
+                            if (c.getGroupUseOr()) {
+                                groupRelative.put(c.getGroup(), "or");
+                            }
+                            groupMap.get(c.getGroup()).add(whereItem);
                         }
-                        if (c.getGroupUseOr()) {
-                            groupRelative.put(c.getGroup(), "or");
-                        }
-                        groupMap.get(c.getGroup()).add(whereItem);
                     }
                 }
             }
@@ -80,17 +82,19 @@ public class ConditionSchema {
 
 
     public String resolveSingle(Object value, String cname) {
-        StringBuilder sb = new StringBuilder();
-        List<Condition> ccnf = conditions.get(cname);
-        if (ccnf != null && ccnf.size() > 0) {
-            if (ccnf == null || ccnf.size() == 0) {
-                return "";
+        if (value != null && !"".equals(value)) {
+            StringBuilder sb = new StringBuilder();
+            List<Condition> ccnf = conditions.get(cname);
+            if (ccnf != null && ccnf.size() > 0) {
+                if (ccnf == null || ccnf.size() == 0) {
+                    return "";
+                }
+                for (Condition cnf : ccnf) {
+                    sb.append(ConditionFactory.resolve(value, cnf));
+                    sb.append("\n");
+                }
+                return sb.toString();
             }
-            for (Condition cnf : ccnf) {
-                sb.append(ConditionFactory.resolve(value, cnf));
-                sb.append("\n");
-            }
-            return sb.toString();
         }
         return "";
     }
