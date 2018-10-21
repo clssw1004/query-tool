@@ -1,9 +1,7 @@
 package com.qgbest.toolkit.query.conditions;
 
-import com.qgbest.toolkit.query.config.ConditionStatic;
 import com.qgbest.toolkit.query.config.Config;
 import com.qgbest.toolkit.query.pojo.Condition;
-import com.qgbest.toolkit.query.utils.MapUtil;
 
 import java.util.HashMap;
 import java.util.Map;
