@@ -13,7 +13,7 @@ public class QueryConditionM {
         return query;
     }
 
-    public void setQuery(Query condition) {
+    public void setQuery(Query query) {
         this.query = query;
     }
 
