@@ -2,8 +2,6 @@ package com.qgbest.toolkit.query.conditions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qgbest.toolkit.query.pojo.Condition;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 
 import java.io.IOException;
 import java.util.*;
