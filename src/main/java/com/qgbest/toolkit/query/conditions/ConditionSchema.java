@@ -1,9 +1,7 @@
 package com.qgbest.toolkit.query.conditions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qgbest.toolkit.query.config.ConditionStatic;
 import com.qgbest.toolkit.query.pojo.Condition;
-import com.qgbest.toolkit.query.utils.MapUtil;
 
 import java.io.IOException;
 import java.util.*;
@@ -79,6 +77,7 @@ public class ConditionSchema {
         }
         return sql.toString();
     }
+
 
 
     public String resolveSingle(Object value, String cname) {
