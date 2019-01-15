@@ -70,10 +70,10 @@ public class SQLUtils {
         String sql = "";
         switch (database) {
             case MYSQL:
-                sql = "str_to_date(" + dataName + ",'%Y-%m-%d %H:%i:%s')";
+                sql = "str_to_date('" + dataName + "','%Y-%m-%d %H:%i:%s')";
                 break;
             case ORACLE11g:
-                sql = String.format("to_date(" + dataName + ",'yyyy-mm-dd hh24:mi:ss')", dataName);
+                sql = String.format("to_date('" + dataName + "','yyyy-mm-dd hh24:mi:ss')", dataName);
                 break;
             default:
                 throw new RuntimeException("Unknown database type：" + database);
@@ -85,10 +85,10 @@ public class SQLUtils {
         String sql = "";
         switch (database) {
             case MYSQL:
-                sql = "str_to_date(" + dataName + ",'%Y-%m-%d')";
+                sql = "str_to_date('" + dataName + "','%Y-%m-%d')";
                 break;
             case ORACLE11g:
-                sql = String.format("to_date(" + dataName + ",'yyyy-mm-dd')", dataName);
+                sql = String.format("to_date('" + dataName + "','yyyy-mm-dd')", dataName);
                 break;
             default:
                 throw new RuntimeException("Unknown database type：" + database);
