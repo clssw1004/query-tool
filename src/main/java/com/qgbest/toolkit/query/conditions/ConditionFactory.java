@@ -11,6 +11,7 @@ public class ConditionFactory {
 
     static {
         factory.put("eq", NormalCondition.EQ);
+        factory.put("neq", NormalCondition.NEQ);
         factory.put("gt", NormalCondition.GT);
         factory.put("gte", NormalCondition.GTE);
         factory.put("lt", NormalCondition.LT);

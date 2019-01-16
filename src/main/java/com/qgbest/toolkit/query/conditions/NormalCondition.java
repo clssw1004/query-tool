@@ -18,6 +18,10 @@ public class NormalCondition implements CommonCondition {
      */
     public static NormalCondition EQ = new NormalCondition("=");
     /**
+     * 等于 equals
+     */
+    public static NormalCondition NEQ = new NormalCondition("!=");
+    /**
      * 大于 greater than
      */
     public static NormalCondition GT = new NormalCondition(">");
