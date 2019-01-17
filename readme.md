@@ -1,30 +1,30 @@
 # 关于查询条件 SCHEME 配置
 
-1. cname：必须
+* cname：必须
 
    > 表示 condition name，是前台传来查询条件的 KEY 值得 key
 
-2. sname:非必需
+* sname:非必需
 
    > 数据库中对应字段的名称，若为空则默认为 cname 值解析为匈牙利命名法（即：cname 为 createDate，若不填写 sname，sname 默认为 CREATE_DATE）
 
-3. dataType:非必须，默认值(str)
+* dataType:非必须，默认值(str)
 
    > 需要查询的字段类型那个，可为：str（字符串）、num（数字）、dt（日期）
 
-4. type，查询类型：非必须，默认值（eq）
+* type，查询类型：非必须，默认值（eq）
 
    > 查询类型，值可为：eq（等于）、gt（大于）、gte（大于等于）、lt（小于）、lte（小于等于）、%（like 查询）、in（范围查询）、neq(不等于)、null(is null)、notnull(is not null)
 
-5. pattern,某些特殊查询会用到。
+* pattern,某些特殊查询会用到。
 
    > 例如当 type 为 like ,sname 为 CNT_NUM pattern 为%\$,前台录入为 123，则查询条件会被组装为：and CNT_NUM like '%123'
 
-6. prefix,查询条件表前缀
+* prefix,查询条件表前缀
 
-7. group,groupUseOr 分组生成(b=1 and/or a=1) 这种形式的条件（**注意:group 值为任意只要同一组值相等就行**）
+* group,groupUseOr 分组生成(b=1 and/or a=1) 这种形式的条件（**注意:group 值为任意只要同一组值相等就行**）
 
-8. useOr 使用 or 拼接条件而不是 and（**注意:查询条件是按 JSON 定义顺序拼接的**）
+* useOr 使用 or 拼接条件而不是 and（**注意:查询条件是按 JSON 定义顺序拼接的**）
 
 # 示例：
 
