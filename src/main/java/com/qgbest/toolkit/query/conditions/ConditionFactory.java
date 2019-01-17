@@ -17,7 +17,8 @@ public class ConditionFactory {
         factory.put("lt", NormalCondition.LT);
         factory.put("lte", NormalCondition.LTE);
         factory.put("like", new LikeCondition());
-        factory.put("in", new InCondition());
+        factory.put("null", new IsNotNull());
+        factory.put("notnull", new IsNotNull(true));
     }
 
     public static String resolve(Object value, Condition condition) {

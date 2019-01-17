@@ -5,7 +5,6 @@ import com.qgbest.toolkit.query.pojo.Condition;
 
 public class LikeCondition implements CommonCondition {
     public String resolve(Object value, Condition condition, Config config) {
-
         String dataExtend = condition.getPattern();
         if (dataExtend != null) {
             dataExtend = dataExtend.replace("$", value.toString());

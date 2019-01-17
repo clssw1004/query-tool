@@ -22,7 +22,6 @@ public class InCondition implements CommonCondition {
         }
         StringBuilder sb = new StringBuilder();
 
-
         if (condition.getPrefix() != null) {
             sb.append(String.format(" %s %s.%s in (", condition.getRelative(), condition.getPrefix(), condition.getSname()));
         } else {
