@@ -16,6 +16,6 @@ public class IsNotNull implements CommonCondition {
 
     @Override
     public String resolve(Object value, Condition condition, Config config) {
-        return String.format(" %s.%s is %s null", condition.getPrefix(), condition.getSname(), this.notNull ? "not" : "");
+        return String.format(" %s %s.%s is %s null", condition.getRelative(),condition.getPrefix(), condition.getSname(), this.notNull ? "not" : "");
     }
 }
