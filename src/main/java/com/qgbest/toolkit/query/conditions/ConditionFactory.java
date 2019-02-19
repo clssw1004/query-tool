@@ -19,6 +19,7 @@ public class ConditionFactory {
         factory.put("like", new LikeCondition());
         factory.put("null", new IsNotNull());
         factory.put("notnull", new IsNotNull(true));
+        factory.put("in", new InCondition());
     }
 
     public static String resolve(Object value, Condition condition) {

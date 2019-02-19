@@ -1,17 +1,15 @@
 package com.qgbest.toolkit.query.conditions;
 
-import com.qgbest.toolkit.query.config.ConditionStatic;
 import com.qgbest.toolkit.query.config.Config;
 import com.qgbest.toolkit.query.enumeration.EnumConditionType;
 import com.qgbest.toolkit.query.pojo.Condition;
-import com.qgbest.toolkit.query.utils.MapUtil;
-import com.qgbest.toolkit.query.utils.NameTransfer;
 import com.qgbest.toolkit.query.utils.SQLUtils;
 
 import java.util.List;
-import java.util.Map;
 
 public class InCondition implements CommonCondition {
+
+    @Override
     public String resolve(Object value, Condition condition, Config config) {
         List values = (List) value;
         if (values.size() == 1) {

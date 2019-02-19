@@ -29,6 +29,12 @@ public class MainTest {
         map.put("cntTypeCode", "0201");
         map.put("bitStatusCode", "456");
         map.put("adddedStatusCode", "123");
+        List cntId = new ArrayList();
+        cntId.add("fdfgdfdfd");
+        cntId.add("fdgfrghtrfd");
+        cntId.add("gtry567656y");
+        cntId.add("dderfert5yuht");
+        map.put("cntId",cntId);
         ConditionSchema schema = new ConditionSchema(testJson);
         System.out.println(schema.resolveMap(map));
     }
@@ -134,6 +140,11 @@ public class MainTest {
             "      \"prefix\": \"a\"\n" +
             "    },\n" +
             "    {\n" +
+            "        \"cname\": \"cntId\",\n" +
+            "        \"type\": \"in\",\n" +
+            "        \"prefix\": \"a\"\n" +
+            "    },\n" +
+            "    {\n" +
             "      \"cname\": \"regDate2\",\n" +
             "      \"sname\": \"SUBMIT_DATE\",\n" +
             "      \"type\": \"lte\",\n" +
@@ -145,5 +156,5 @@ public class MainTest {
             "      \"prefix\": \"a\"\n" +
             "    }\n" +
             "  ]\n" +
-            "}";
+            "}\n";
 }
