@@ -16,7 +16,7 @@ public class InCondition implements CommonCondition {
             /**
              * 当条件in查询长度为1时，自动优化为等于处理
              */
-            return NormalCondition.EQ.resolve(value, condition, config);
+            return NormalCondition.EQ.resolve(values.get(0), condition, config);
         }
         StringBuilder sb = new StringBuilder();
 
