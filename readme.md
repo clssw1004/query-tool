@@ -132,6 +132,11 @@
       "prefix": "a"
     },
     {
+        "cname": "cntId",
+        "type": "in",
+        "prefix": "a"
+    },
+    {
       "cname": "regDate2",
       "sname": "SUBMIT_DATE",
       "type": "lte",
@@ -144,40 +149,49 @@
     }
   ]
 }
+
 ```
 
 查询条件值为：
 
 ```java
-  Map map = new HashMap();
-  map.put("projName", "人类补全计划");
-  map.put("statusCode", "05");
-  map.put("buyerName", "崔伟");
-  map.put("fillDate1", "2018-09-01 12:02:11");
-  map.put("fillDate2", "2018-09-10 23`:02:11");
-  map.put("cntNum", "320121");
-  map.put("cntAdmdivCode", "32121");
-  map.put("regCode", "32012");
-  map.put("sellerName", "南京");
-  map.put("cntTypeCode", "0201");
-  map.put("bitStatusCode", "456");
-  map.put("adddedStatusCode", "123");
-  ConditionSchema schema = new ConditionSchema(testJson);
-  System.out.println(schema.resolveMap(map));
+    Map map = new HashMap();
+    map.put("projName", "人类补全计划");
+    map.put("statusCode", "05");
+    map.put("buyerName", "崔伟");
+    map.put("fillDate1", "2018-09-01 12:02:11");
+    map.put("fillDate2", "2018-09-10 23`:02:11");
+    map.put("cntNum", "320121");
+    map.put("cntAdmdivCode", "32121");
+    map.put("regCode", "32012");
+    map.put("sellerName", "南京");
+    map.put("cntTypeCode", "0201");
+    map.put("bitStatusCode", "456");
+    map.put("adddedStatusCode", "123");
+    List cntId = new ArrayList();
+    cntId.add("fdfgdfdfd");
+    cntId.add("fdgfrghtrfd");
+    cntId.add("gtry567656y");
+    cntId.add("dderfert5yuht");
+    map.put("cntId",cntId);
+    ConditionSchema schema = new ConditionSchema(testJson);
+    System.out.println(schema.resolveMap(map));
 ```
 
 - 输出为：
 
 ```SQL
- and a.CNT_TYPE_CODE='0201' 
+ and a.CNT_ID in ('fdfgdfdfd','fdgfrghtrfd','gtry567656y','dderfert5yuht') 
  and a.PROJ_NAME like '%人类补全计划%' 
- and a.SUBMIT_DATE>=to_date('2018-09-01 12:02:11','yyyy-mm-dd hh24:mi:ss') 
  and a.SELLER_NAME like '%南京%' 
- and a.SUBMIT_DATE<=to_date('2018-09-10 23`:02:11','yyyy-mm-dd hh24:mi:ss') 
  and a.CNT_NUM='320121' 
+ and a.CNT_TYPE_CODE='0201' 
+ and a.SUBMIT_DATE>=to_date('2018-09-01 12:02:11','yyyy-mm-dd hh24:mi:ss') 
+ and a.SUBMIT_DATE<=to_date('2018-09-10 23`:02:11','yyyy-mm-dd hh24:mi:ss') 
  and a.STATUS_CODE='05' 
  and a.STATUS_CODE is not null
  and (a.BUYER_NAME like '%崔伟%'  or a.BUYER_NAME is  null ) 
  and (b.CNT_ADMDIV_CODE='32121'  and b.REG_CODE='32012'  ) 
- or (a.BIT_STATUS_CODE='456'  and b.ADDDED_STATUS_CODE='123'  ) 
+ or (b.ADDDED_STATUS_CODE='123'  and a.BIT_STATUS_CODE='456'  ) 
+
 ```
