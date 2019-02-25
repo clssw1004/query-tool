@@ -8,7 +8,7 @@ import java.util.*;
 
 public class ConditionSchema {
 
-    private static Map<String, List<Condition>> conditions;
+    private Map<String, List<Condition>> conditions;
 
     public ConditionSchema(String json) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
