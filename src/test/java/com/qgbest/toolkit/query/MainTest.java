@@ -1,5 +1,6 @@
 package com.qgbest.toolkit.query;
 
+import com.qgbest.toolkit.query.conditions.ConditionFactory;
 import com.qgbest.toolkit.query.conditions.ConditionSchema;
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,7 +16,7 @@ public class MainTest {
 
     @Test
     public void testCondition() throws IOException {
-
+        ConditionFactory.init();
         Map map = new HashMap();
         map.put("projName", "人类补全计划");
         map.put("statusCode", "05");
@@ -34,7 +35,7 @@ public class MainTest {
         cntId.add("fdgfrghtrfd");
         cntId.add("gtry567656y");
         cntId.add("dderfert5yuht");
-        map.put("cntId",cntId);
+        map.put("cntId", cntId);
         ConditionSchema schema = new ConditionSchema(testJson);
         System.out.println(schema.resolveMap(map));
     }

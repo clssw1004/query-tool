@@ -7,9 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ConditionFactory {
-    static Map<String, CommonCondition> factory = new HashMap<String, CommonCondition>();
+    static Map<String, CommonCondition> factory = null;
 
-    static {
+    public static void init() {
+        factory = new HashMap<>();
         factory.put("eq", NormalCondition.EQ);
         factory.put("neq", NormalCondition.NEQ);
         factory.put("gt", NormalCondition.GT);

@@ -1,14 +1,9 @@
 package com.qgbest.toolkit.query.conditions;
 
-import com.qgbest.toolkit.query.config.ConditionStatic;
 import com.qgbest.toolkit.query.config.Config;
 import com.qgbest.toolkit.query.enumeration.EnumConditionType;
 import com.qgbest.toolkit.query.pojo.Condition;
-import com.qgbest.toolkit.query.utils.MapUtil;
-import com.qgbest.toolkit.query.utils.NameTransfer;
 import com.qgbest.toolkit.query.utils.SQLUtils;
-
-import java.util.Map;
 
 public class NormalCondition implements CommonCondition {
     private String operator;
