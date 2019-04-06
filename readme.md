@@ -158,7 +158,7 @@
     Map map = new HashMap();
     map.put("projName", "人类补全计划");
     map.put("statusCode", "05");
-    map.put("buyerName", "崔伟");
+    map.put("buyerName", "小明");
     map.put("fillDate1", "2018-09-01 12:02:11");
     map.put("fillDate2", "2018-09-10 23`:02:11");
     map.put("cntNum", "320121");
@@ -190,7 +190,7 @@
  and a.SUBMIT_DATE<=to_date('2018-09-10 23`:02:11','yyyy-mm-dd hh24:mi:ss') 
  and a.STATUS_CODE='05' 
  and a.STATUS_CODE is not null
- and (a.BUYER_NAME like '%崔伟%'  or a.BUYER_NAME is  null ) 
+ and (a.BUYER_NAME like '%小明%'  or a.BUYER_NAME is  null ) 
  and (b.CNT_ADMDIV_CODE='32121'  and b.REG_CODE='32012'  ) 
  or (b.ADDDED_STATUS_CODE='123'  and a.BIT_STATUS_CODE='456'  ) 
 
